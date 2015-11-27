@@ -45,7 +45,7 @@ var str = "Wake up Neo<br>The Matrix has you...<br>Follow the white rabbit...<br
     text;
 
 (function type() {
-    text = str.slice(0, ++i);
+    text = str.slice(0, i);
     if (text === str) return;
     
     document.getElementById('zzionshao').innerHTML = text;
@@ -54,8 +54,13 @@ var str = "Wake up Neo<br>The Matrix has you...<br>Follow the white rabbit...<br
     if( char === '<' ) isTag = true;
     if( char === '>' ) isTag = false;
 
+    var intv = Math.random() * 220 + 80;
+    var char2 = str.charAt(i); //if next string is '<' (CR), wait longer...
+    if (char2 === '<') intv += 2000;
+    i++;
+
     if (isTag) return type();
-    setTimeout(type, Math.random() * 220 + 80);
+    setTimeout(type, intv);
 }());
 </script>
 </body>
