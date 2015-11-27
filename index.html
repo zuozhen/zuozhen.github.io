@@ -1,1 +1,62 @@
-Hello World
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>yyypt - 一叶一菩提</title>
+<meta name="description" content="大梦谁先觉... 上士闻道，勤而行之... 若见诸相非相，即见如来..." />
+<meta name="keywords" content="yyypt, 一叶一菩提" />
+<style type="text/css">
+body {
+	background-color: #000;
+}
+#zzionshao {
+	font-family: "Courier New", Courier, monospace;
+	color:#63de00;
+}
+
+#cursor {
+  background:#63de00; 
+  display:inline-block;
+  width:11px;
+  height:19px;
+  margin-bottom:-3px;
+}
+
+#cursor {
+  animation: blinker 0.9s ease infinite;
+  -webkit-animation: blinker 0.9s ease infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+@-webkit-keyframes blinker {  
+  50% { opacity: 0.0; }
+}
+</style>
+</head>
+
+<body>
+<span id="zzionshao"></span><span id="cursor"></span>
+<script>
+var str = "Wake up Neo<br>The Matrix has you...<br>Follow the white rabbit...<br>Knock knock Neo.",
+    i = 0,
+    isTag,
+    text;
+
+(function type() {
+    text = str.slice(0, ++i);
+    if (text === str) return;
+    
+    document.getElementById('zzionshao').innerHTML = text;
+
+    var char = text.slice(-1);
+    if( char === '<' ) isTag = true;
+    if( char === '>' ) isTag = false;
+
+    if (isTag) return type();
+    setTimeout(type, Math.random() * 220 + 80);
+}());
+</script>
+</body>
+</html>
